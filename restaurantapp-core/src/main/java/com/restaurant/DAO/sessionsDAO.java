@@ -52,22 +52,7 @@ public class sessionsDAO {
 			
 		});
 		
-		public sessions listById(int id)
-		{
-		  String sql = "select session_name from sessions where session_id=?";	
-		  Object[] params = { id };
-		  return jdbcTemplate.query(sql,params,(rs,rowNum) ->
-		  {
-			  sessions session1 = new sessions();
 
-			session1.setSessionId(rs.getInt("session_id"));
-			session1.setSessionName(rs.getString("session_name"));
-			return session1;
-			  
-		  });
-			
-			
-		}
 		
 		
 		
