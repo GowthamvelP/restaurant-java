@@ -20,12 +20,16 @@ public class DAOTestProcedure {
 		 * 
 		 * 
 		 * String status =
-		 * dao.placeOrder(101,"VarietyRice,NorthIndianThali",LocalTime.parse(
+		 * dao.PlaceOrder(101,"VarietyRice,NorthIndianThali",LocalTime.parse(
 		 * timeForm),"2,3","@message"); System.out.println(status);
 		 */
-		String status = dao.cancelOrder(101, "VarietyRice", 2, "@statement");
+		/*String status = dao.CancelOrder(101, "VarietyRice", 2, "@statement");
 		System.out.println(status);
-
+		/*dao.UpdateRemaining(1,5);
+		dao.UpdateRemainingCancelled(1,5);*/
+/*System.out.println(dao.FnItemsLimit(11));*/
+		/*System.out.println(dao.FnCheckSeat(1231));*/
+		System.out.println(dao.FnCheckRemaining(1,80));
 	}
 
 }

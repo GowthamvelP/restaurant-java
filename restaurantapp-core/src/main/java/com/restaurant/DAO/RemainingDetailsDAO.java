@@ -43,15 +43,17 @@ public class RemainingDetailsDAO {
 
 	public List<RemainingDetails> list() {
 
-		RemainingDetails remaining = new RemainingDetails();
-		ItemsList items = new ItemsList();
-		Sessions session = new Sessions();
+
 		String sql = "select * from remaining_details";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
+			RemainingDetails remaining = new RemainingDetails();
+
+			ItemsList items = new ItemsList();
+			Sessions session = new Sessions();
 			remaining.setSno(rs.getInt("sno"));
 			items.setItemId(rs.getInt("item_id"));
 			remaining.setItemId(items);
-			session.setSessionId(rs.getInt("session_id"));
+			session.setSessionId(rs.getInt("se_id"));
 			remaining.setSeId(session);
 			remaining.setRemaining(rs.getInt("remaining"));
 			return remaining;

@@ -23,8 +23,8 @@ public class OrderTransactionDAO {
 
 	public List<OrderTransaction> list() {
 		String sql = "select * from order_transaction";
-		OrderTransaction trans = new OrderTransaction();
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
+			OrderTransaction trans = new OrderTransaction();
 			trans.setTransId(rs.getInt("trans_id"));
 			trans.setOrderId(rs.getInt("order_id"));
 			trans.setItemId(rs.getInt("item_id"));

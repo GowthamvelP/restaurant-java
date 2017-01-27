@@ -42,12 +42,13 @@ public class SessionsDAO {
 
 	public List<Sessions> list() {
 		String sql = "select * from sessions";
-		Sessions session = new Sessions();
+		
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
+			Sessions session = new Sessions();
 			session.setSessionId(rs.getInt("session_id"));
 			session.setSessionName(rs.getString("session_name"));
-			session.setFromTime(rs.getString("from_time"));
-			session.setToTime(rs.getString("to_time"));
+			session.setFromTime(rs.getTime("from_time").toLocalTime());
+			session.setToTime(rs.getTime("to_time").toLocalTime());
 			session.setQuantity(rs.getInt("quantity"));
 			return session;
 

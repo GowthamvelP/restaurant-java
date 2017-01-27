@@ -14,7 +14,7 @@ public class DAOTest {
 		 * sessionsdao.save(session); sessionsdao.delete(5);
 		 * sessionsdao.update(session); sessionsdao.list();
 		 */
-		System.out.println(sessionsdao.listById(1));
+		System.out.println(sessionsdao.list());
 
 	}
 }

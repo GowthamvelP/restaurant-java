@@ -8,7 +8,7 @@ import com.restaurant.model.Sessions;
 public class DAOTestOrders {
 	public static void main(String[] args) {
 		OrderTransactionDAO trans = new OrderTransactionDAO();
-		OrderTransaction transaction = new OrderTransaction();
+		/*OrderTransaction transaction = new OrderTransaction();
 		ItemsList iid = new ItemsList();
 		SeatDetails seats = new SeatDetails();
 		Sessions sess = new Sessions();
@@ -23,7 +23,7 @@ public class DAOTestOrders {
 		transaction.setFoodOrdered("idly");
 		transaction.setOrderTime("09:00:00");
 		transaction.setOrderStatus("Order Placed");
-		trans.save(transaction);
+		trans.save(transaction);*/
 		System.out.println(trans.list());
 
 	}

@@ -17,7 +17,7 @@ public class ProcedureDAO {
 
 	private final JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
-	public String placeOrder(int seatno, String items, LocalTime orderTime, String quantity, String message) {
+	public String PlaceOrder(int seatno, String items, LocalTime orderTime, String quantity, String message) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("pr_multi_menu").declareParameters(
 				new SqlParameter("seat_no", Types.INTEGER), new SqlParameter("order_list", Types.VARCHAR),
 				new SqlParameter("order_time", Types.TIME), new SqlParameter("quantity_list", Types.VARCHAR),
@@ -33,7 +33,7 @@ public class ProcedureDAO {
 
 	}
 
-	public String cancelOrder(int seatno, String items, int quantity, String message) {
+	public String CancelOrder(int seatno, String items, int quantity, String message) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("pr_cancel_order").declareParameters(
 				new SqlParameter("seat_no_par", Types.INTEGER), new SqlParameter("item", Types.VARCHAR),
 				new SqlParameter("cancel_quantity", Types.VARCHAR), new SqlOutParameter("statement", Types.VARCHAR));
@@ -46,4 +46,49 @@ public class ProcedureDAO {
 		return status;
 
 	}
+
+	public String UpdateRemaining(int itemid, int quantity) {
+		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("pr_to_update_remiaining")
+				.declareParameters(new SqlParameter("item_id_par", Types.INTEGER),
+						new SqlOutParameter("quantity", Types.INTEGER));
+		call.setAccessCallParameterMetaData(false);
+		SqlParameterSource in = new MapSqlParameterSource().addValue("item_id_par", itemid).addValue("quantity",
+				quantity);
+
+		Map<String, Object> execute = call.execute(in);
+		return null;
+
+	}
+
+	public String UpdateRemainingCancelled(int itemid, int quantity) {
+		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("pr_to_update_remiaining")
+				.declareParameters(new SqlParameter("item_id_par", Types.INTEGER),
+						new SqlOutParameter("cancel_quantity", Types.INTEGER));
+		call.setAccessCallParameterMetaData(false);
+		SqlParameterSource in = new MapSqlParameterSource().addValue("item_id_par", itemid).addValue("cancel_quantity",
+				quantity);
+
+		Map<String, Object> execute = call.execute(in);
+		return null;
+
+	}
+	public int FnItemsLimit(int orderId) {
+		String sql = "select fn_check_items_limit(?)";
+		Object[] params = { orderId };
+		int status = jdbcTemplate.queryForObject(sql, params, int.class);
+		return status;
+	}
+	public int FnCheckSeat(int seatno) {
+		String sql = "select fn_check_seat(?)";
+		Object[] params = { seatno };
+		int status = jdbcTemplate.queryForObject(sql, params, int.class);
+		return status;
+	}
+	public int FnCheckRemaining(int itemid,int quantity) {
+		String sql = "select fn_check_remaining(?,?)";
+		Object[] params = { itemid,quantity };
+		int status = jdbcTemplate.queryForObject(sql, params, int.class);
+		return status;
+	}
+	
 }
