@@ -3,7 +3,7 @@ package com.restaurant.DAO;
 /*import com.restaurant.model.ItemsList;
 import com.restaurant.model.Sessions;*/
 
-public class DAOtestitems {
+public class DAOTestItems {
 	public static void main(String[] args) {
 ItemsListDAO testitems = new ItemsListDAO();
 /*ItemsList itemslist = new ItemsList();

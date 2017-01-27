@@ -5,7 +5,7 @@ import com.restaurant.model.OrderTransaction;
 import com.restaurant.model.SeatDetails;
 import com.restaurant.model.Sessions;
 
-public class DAOtestorders {
+public class DAOTestOrders {
 	public static void main(String[] args) {
 OrderTransactionDAO trans = new OrderTransactionDAO();
 OrderTransaction transaction = new OrderTransaction();

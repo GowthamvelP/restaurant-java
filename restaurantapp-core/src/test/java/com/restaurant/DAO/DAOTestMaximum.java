@@ -2,7 +2,7 @@ package com.restaurant.DAO;
 
 import com.restaurant.model.MaximumQuantity;
 
-public class DAOtestmaximum {
+public class DAOTestMaximum {
 	public static void main(String[] args) {
 MaximumQuantityDAO max = new MaximumQuantityDAO();
 MaximumQuantity maxi = new MaximumQuantity();

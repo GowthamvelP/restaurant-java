@@ -4,7 +4,7 @@ import com.restaurant.model.ItemsList;
 import com.restaurant.model.RemainingDetails;
 import com.restaurant.model.Sessions;
 
-public class DAOtestremaining {
+public class DAOTestRemaining {
 
 	public static void main(String[] args) {
 		RemainingDetailsDAO remain = new RemainingDetailsDAO();

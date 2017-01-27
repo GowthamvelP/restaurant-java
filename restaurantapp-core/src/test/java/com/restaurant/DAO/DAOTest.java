@@ -2,7 +2,7 @@ package com.restaurant.DAO;
 
 /*import com.restaurant.model.Sessions;*/
 
-public class DAOtest {
+public class DAOTest {
 	public static void main(String[] args) {
        SessionsDAO sessionsdao = new SessionsDAO();
 		/*sessions session = new sessions();
