@@ -40,37 +40,31 @@ public class SessionsDAO {
 
 	}
 
-	public List<Sessions> list()
-	{
+	public List<Sessions> list() {
 		String sql = "select * from sessions";
 		Sessions session = new Sessions();
-		return jdbcTemplate.query(sql, (rs,rowNum) ->
-		{
+		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 			session.setSessionId(rs.getInt("session_id"));
 			session.setSessionName(rs.getString("session_name"));
 			session.setFromTime(rs.getString("from_time"));
 			session.setToTime(rs.getString("to_time"));
 			session.setQuantity(rs.getInt("quantity"));
 			return session;
-			
+
 		});
 	}
-		public Sessions listById(int id) {
+
+	public Sessions listById(int id) {
 
 		String sql = "select session_name,session_id from sessions where session_id=?";
 		Object[] params = { id };
-		 return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
-		       	Sessions s = new Sessions();
-		       	s.setSessionId(rs.getInt("session_id"));
-		       	s.setSessionName(rs.getString("session_name"));
-		 return s;
+		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
+			Sessions s = new Sessions();
+			s.setSessionId(rs.getInt("session_id"));
+			s.setSessionName(rs.getString("session_name"));
+			return s;
 		});
-			
 
-
-		}
-		
-		
-		
 	}
 
+}
