@@ -3,7 +3,7 @@ package com.restaurant.model;
 import lombok.Data;
 
 @Data
-public class order_transaction {
+public class OrderTransaction {
 	private int transId;
 	private int orderId;
 	private int itemId;

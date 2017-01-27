@@ -1,17 +1,17 @@
 package com.restaurant.DAO;
 
-import com.restaurant.model.items_list;
-import com.restaurant.model.order_transaction;
-import com.restaurant.model.seat_details;
-import com.restaurant.model.sessions;
+import com.restaurant.model.ItemsList;
+import com.restaurant.model.OrderTransaction;
+import com.restaurant.model.SeatDetails;
+import com.restaurant.model.Sessions;
 
 public class DAOtestorders {
 	public static void main(String[] args) {
-order_transactionDAO trans = new order_transactionDAO();
-order_transaction transaction = new order_transaction();
-items_list iid = new items_list();
-seat_details seats = new seat_details();
-sessions sess = new sessions();
+OrderTransactionDAO trans = new OrderTransactionDAO();
+OrderTransaction transaction = new OrderTransaction();
+ItemsList iid = new ItemsList();
+SeatDetails seats = new SeatDetails();
+Sessions sess = new Sessions();
 iid.setItemId(1);
 iid.setItems("idly");
 sess.setSessionId(1);

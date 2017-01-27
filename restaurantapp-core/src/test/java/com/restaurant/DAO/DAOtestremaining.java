@@ -1,16 +1,16 @@
 package com.restaurant.DAO;
 
-import com.restaurant.model.items_list;
-import com.restaurant.model.remaining_details;
-import com.restaurant.model.sessions;
+import com.restaurant.model.ItemsList;
+import com.restaurant.model.RemainingDetails;
+import com.restaurant.model.Sessions;
 
 public class DAOtestremaining {
 
 	public static void main(String[] args) {
-remaining_detailsDAO remain = new remaining_detailsDAO();
-remaining_details remains = new remaining_details();
-sessions sessionobj = new sessions();
-items_list iid = new items_list();
+		RemainingDetailsDAO remain = new RemainingDetailsDAO();
+		RemainingDetails remains = new RemainingDetails();
+Sessions sessionobj = new Sessions();
+ItemsList iid = new ItemsList();
 sessionobj.setSessionId(1);
 iid.setItemId(20);
 remains.setSno(17);

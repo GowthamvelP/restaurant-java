@@ -3,13 +3,13 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.restaurant.model.maximum_quantity;
+import com.restaurant.model.MaximumQuantity;
 import com.restaurant.util.ConnectionUtil;
-public class maximum_quantityDAO {
+public class MaximumQuantityDAO {
 
 		JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
-		public void save(maximum_quantity maxi) {
+		public void save(MaximumQuantity maxi) {
 
 			String sql = "insert into maximum_quantity(sno,day_name,max_quantity) values(?,?,?)";
 			Object[] params = { maxi.getSno(), maxi.getDayName(),maxi.getMaxQuantity()};
@@ -18,7 +18,7 @@ public class maximum_quantityDAO {
 
 		}
 
-		public void update(maximum_quantity maxi ) {
+		public void update(MaximumQuantity maxi ) {
 
 			String sql = "update maximum_quantity set max_quantity=? where day_name=?";
 			Object[] params = {maxi.getSno(),maxi.getDayName(),maxi.getMaxQuantity()};
@@ -35,13 +35,13 @@ public class maximum_quantityDAO {
 			System.out.println("No of rows deleted: " + rows);
 
 		}
-		public List<maximum_quantity> list()
+		public List<MaximumQuantity> list()
 		{
 			
 			String sql = "select * from maximum_quantity";
 			return jdbcTemplate.query(sql, (rs,rowNum) ->
 			{
-				maximum_quantity max = new maximum_quantity();
+				MaximumQuantity max = new MaximumQuantity();
 				max.setSno(rs.getInt("sno"));
 				max.setDayName(rs.getString("day_name"));
 				max.setMaxQuantity(rs.getInt("max_quantity"));

@@ -3,7 +3,7 @@ package com.restaurant.model;
 import lombok.Data;
 
 @Data 
-public class sessions {
+public class Sessions {
 
 	private int sessionId;
 	 private String sessionName;

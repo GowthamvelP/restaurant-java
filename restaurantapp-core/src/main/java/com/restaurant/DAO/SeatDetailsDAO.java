@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.restaurant.model.seat_details;
+import com.restaurant.model.SeatDetails;
 import com.restaurant.util.ConnectionUtil;
-public class seat_detailsDAO {
+public class SeatDetailsDAO {
 
 		JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
-		public void save(seat_details seat) {
+		public void save(SeatDetails seat) {
 
 			String sql = "insert into seat_details(seat_id,seat_no,seat_status) values(?,?,?)";
 			Object[] params = { seat.getSeatId(), seat.getSeatNo(),seat.getSeatStatus()};
@@ -19,7 +19,7 @@ public class seat_detailsDAO {
 
 		}
 
-		public void update(seat_details seat) {
+		public void update(SeatDetails seat) {
 
 			String sql = "update seat_details set seat_stautus=? where seat_no=?";
 			Object[] params = {seat.getSeatId(),seat.getSeatNo(),seat.getSeatStatus()};
@@ -36,10 +36,10 @@ public class seat_detailsDAO {
 			System.out.println("No of rows deleted: " + rows);
 
 		}
-		public List<seat_details> list()
+		public List<SeatDetails> list()
 		{
 			String sql="select * from seat_details";
-			seat_details seat = new seat_details();
+			SeatDetails seat = new SeatDetails();
 			return jdbcTemplate.query(sql, (rs,rowNum) ->
 			{	
 		    seat.setSeatId(rs.getInt("seat_id"));
@@ -48,10 +48,26 @@ public class seat_detailsDAO {
 			return seat;
 				
 			});
+		}
+			
+			public SeatDetails listBySeatno(int id)
+			{
+				String sql = "select seat_status from seat_details where seat_no=?";
+				Object[] params = { id };
+				 return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
+					 SeatDetails s = new SeatDetails();
+				       	s.setSeatNo(rs.getInt("seat_no"));
+				       	s.setSeatStatus(rs.getString("seat_status"));
+				 return s;
+				});
+				
+				
+				
+				
 			
 			
 			
 			
 		}
-
+	
 }

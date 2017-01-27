@@ -1,9 +1,10 @@
 package com.restaurant.model;
 
 import lombok.Data;
-@Data 
-public class items_list {
+
+@Data
+public class ItemsList {
 private int itemId;
-private sessions sessionId;
+private Sessions sessionId;
 private String items;
 }

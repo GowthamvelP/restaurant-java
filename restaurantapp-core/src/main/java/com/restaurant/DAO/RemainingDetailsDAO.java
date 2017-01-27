@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.restaurant.model.items_list;
-import com.restaurant.model.remaining_details;
-import com.restaurant.model.sessions;
+import com.restaurant.model.ItemsList;
+import com.restaurant.model.RemainingDetails;
+import com.restaurant.model.Sessions;
 import com.restaurant.util.ConnectionUtil;
-public class remaining_detailsDAO {
+public class RemainingDetailsDAO {
 
 		JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
-		public void save(remaining_details remains) {
+		public void save(RemainingDetails remains) {
 
 			String sql = "insert into remaining_details(sno,se_id,item_id,remaining) values(?,?,?,?)";
 			Object[] params = { remains.getSno(),remains.getSeId().getSessionId(), remains.getItemId().getItemId(),remains.getRemaining()};
@@ -21,7 +21,7 @@ public class remaining_detailsDAO {
 
 		}
 
-		public void update(remaining_details remains) {
+		public void update(RemainingDetails remains) {
 
 			String sql = "update remaining_details set remaining=? where item_Id=?";
 			Object[] params = {remains.getSeId().getSessionId(), remains.getItemId().getItemId(),remains.getRemaining()};
@@ -38,13 +38,13 @@ public class remaining_detailsDAO {
 			System.out.println("No of rows deleted: " + rows);
 
 		}
-		public List<remaining_details> list()
+		public List<RemainingDetails> list()
 		{
 			
 			
-			remaining_details remaining = new remaining_details();
-			items_list items = new items_list();
-			sessions session = new sessions();
+			RemainingDetails remaining = new RemainingDetails();
+			ItemsList items = new ItemsList();
+			Sessions session = new Sessions();
 			String sql="select * from remaining_details";
 			return jdbcTemplate.query(sql,(rs,rowNum) ->
 			{
@@ -60,15 +60,15 @@ public class remaining_detailsDAO {
 		}
 		
 		
-		/*public items_list listbyId(int id)
+		/*public ItemsLIst listbyId(int id)
 		{
 			String sql="select remaining from remaining_details where item_id=? and session_id=?"; 
 			Object[] params = {id};
 			return jdbcTemplate.queryForObject(sql,params,(rs,rowNum) ->
 			{
-				items_list items = new items_list();
-				remaining_details remaining = new remaining_details();
-				sessions session = new sessions();
+				ItemsLIst items = new ItemsLIst();
+				RemainingDetails remaining = new RemainingDetails();
+				Sessions session = new Sessions();
 				
 				items.setItemId(rs.getInt("item_id"));
 				remaining.setItemId(items);

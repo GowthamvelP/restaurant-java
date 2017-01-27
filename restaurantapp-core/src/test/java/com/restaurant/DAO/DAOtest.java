@@ -1,11 +1,11 @@
 package com.restaurant.DAO;
 
-import com.restaurant.model.sessions;
+/*import com.restaurant.model.Sessions;*/
 
 public class DAOtest {
 	public static void main(String[] args) {
-       sessionsDAO sessionsdao = new sessionsDAO();
-		sessions session = new sessions();
+       SessionsDAO sessionsdao = new SessionsDAO();
+		/*sessions session = new sessions();
 		session.setSessionId(16);
 		session.setSessionName("chatitems");
 		session.setFromTime("08:00:00");
@@ -16,7 +16,8 @@ public class DAOtest {
 		sessionsdao.save(session);
 		sessionsdao.delete(5);
 		sessionsdao.update(session);
-		sessionsdao.list();
-		
+		sessionsdao.list();*/
+		System.out.println(sessionsdao.listById(1));
+		 
 	}
 }

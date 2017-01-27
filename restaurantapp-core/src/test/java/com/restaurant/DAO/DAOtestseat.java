@@ -1,17 +1,17 @@
 package com.restaurant.DAO;
 
-import com.restaurant.model.seat_details;
+import com.restaurant.model.SeatDetails;
 
 public class DAOtestseat {
 	public static void main(String[] args) {
-seat_detailsDAO seats = new seat_detailsDAO();
-seat_details seat = new seat_details();
+		SeatDetailsDAO seats = new SeatDetailsDAO();
+		SeatDetails seat = new SeatDetails();
 seat.setSeatId(11);
 seat.setSeatNo(111);
 seat.setSeatStatus("Available");
-seats.delete(111);
-seats.update(seat);
+/*seats.delete(111);
+seats.update(seat);*/
 seats.save(seat);
-seats.list();
+/*seats.list();*/
 }
 }

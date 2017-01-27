@@ -3,14 +3,14 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.restaurant.model.items_list;
-import com.restaurant.model.sessions;
+import com.restaurant.model.ItemsList;
+import com.restaurant.model.Sessions;
 import com.restaurant.util.ConnectionUtil;
 
-public class items_listDAO {
+public class ItemsListDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
-	public void save(items_list itemslist) {
+	public void save(ItemsList itemslist) {
 
 		String sql = "insert into items_list(item_id,session_id,items) values(?,?,?)";
 		Object[] params = { itemslist.getItemId(), itemslist.getSessionId().getSessionId(),itemslist.getItems()};
@@ -19,7 +19,7 @@ public class items_listDAO {
 
 	}
 
-	public void update(items_list itemslist) {
+	public void update(ItemsList itemslist) {
 
 		String sql = "update items_list set session_name=? where session_id=?";
 		Object[] params = {itemslist.getItemId(), itemslist.getSessionId(),itemslist.getItems()};
@@ -36,7 +36,7 @@ public class items_listDAO {
 		System.out.println("No of rows deleted: " + rows);
 
 	}
-	public List<items_list> list()
+	public List<ItemsList> list()
 	{
 		String sql="select * from items_list";
 		
@@ -44,8 +44,8 @@ public class items_listDAO {
 		
 				
 		{
-			items_list items = new items_list();
-			sessions session = new sessions();
+			ItemsList items = new ItemsList();
+			Sessions session = new Sessions();
 			session.setSessionId(rs.getInt("session_id"));
 			items.setItemId(rs.getInt("item_id"));
 			items.setSessionId(session);

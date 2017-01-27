@@ -3,10 +3,10 @@ package com.restaurant.model;
 import lombok.Data;
 
 @Data
-public class remaining_details {
+public class RemainingDetails {
 private int sno;
-private sessions seId;
-private items_list itemId;
+private Sessions seId;
+private ItemsList itemId;
 private int remaining;
 
 }

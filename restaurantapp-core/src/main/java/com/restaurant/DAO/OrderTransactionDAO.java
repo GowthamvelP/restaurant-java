@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.restaurant.model.order_transaction;
+import com.restaurant.model.OrderTransaction;
 import com.restaurant.util.ConnectionUtil;
-	public class order_transactionDAO  {
+	public class OrderTransactionDAO  {
 		JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
               
-		  public void save(order_transaction transaction) {
+		  public void save(OrderTransaction transaction) {
 
 				String sql = "insert into order_transaction(trans_id,order_id,item_id,seat_no,food_ordered,quantity,order_time,order_status) values(?,?,?,?,?,?,?,?)";
 				Object[] params = { transaction.getTransId(),transaction.getOrderId(), transaction.getItemId(),transaction.getSeatNo(),transaction.getFoodOrdered(),transaction.getQuantity(),transaction.getOrderTime(),transaction.getOrderStatus()};
@@ -18,10 +18,10 @@ import com.restaurant.util.ConnectionUtil;
 				System.out.println("No of rows inserted: " + rows);
 
 			}
-			public List<order_transaction> list()
+			public List<OrderTransaction> list()
 			{
 				String sql="select * from order_transaction";
-				order_transaction trans = new order_transaction();
+				OrderTransaction trans = new OrderTransaction();
 				return jdbcTemplate.query(sql, (rs,rowNum) ->
 				{	
 			  trans.setTransId(rs.getInt("trans_id"));

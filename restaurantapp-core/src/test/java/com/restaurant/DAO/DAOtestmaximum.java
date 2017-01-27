@@ -1,11 +1,11 @@
 package com.restaurant.DAO;
 
-import com.restaurant.model.maximum_quantity;
+import com.restaurant.model.MaximumQuantity;
 
 public class DAOtestmaximum {
 	public static void main(String[] args) {
-maximum_quantityDAO max = new maximum_quantityDAO();
-maximum_quantity maxi = new maximum_quantity();
+MaximumQuantityDAO max = new MaximumQuantityDAO();
+MaximumQuantity maxi = new MaximumQuantity();
 maxi.setSno(2);
 maxi.setDayName("week_end");
 maxi.setMaxQuantity(4);
