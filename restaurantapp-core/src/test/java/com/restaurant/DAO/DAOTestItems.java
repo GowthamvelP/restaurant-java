@@ -11,10 +11,11 @@ public class DAOTestItems {
 		 * Sessions(); session.setSessionId(1); itemslist.setItemId(20);
 		 * itemslist.setSessionId(session); itemslist.setItems("vadacurry");
 		 */
-		System.out.println(testitems.list());
+		System.out.println(testitems.listbyid(0));
 		/*
 		 * testitems.save(itemslist); testitems.update(itemslist);
 		 * testitems.delete(1);
 		 */
+		testitems.delete(101);
 	}
 }

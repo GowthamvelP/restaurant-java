@@ -2,6 +2,9 @@ package com.restaurant.DAO;
 
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+/*import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;*/
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.Sessions;
@@ -13,12 +16,16 @@ public class SessionsDAO {
 
 	public void save(Sessions session) {
 
-		String sql = "insert into sessions(session_id,session_name,from_time,to_time,quantity) values(?,?,?,?,?)";
-		Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
-				session.getToTime(), session.getQuantity() };
-		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows inserted: " + rows);
+		try {
+			String sql = "insert into sessions(session_id,session_name,from_time,to_time,quantity) values(?,?,?,?,?)";
+			Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
+					session.getToTime(), session.getQuantity() };
+			int rows = jdbcTemplate.update(sql, params);
+			System.out.println("No of rows inserted: " + rows);
+		} catch (DuplicateKeyException e) {
+			System.out.println("Cannot have a duplicate key");
 
+		}
 	}
 
 	public void update(Sessions session) {
@@ -42,7 +49,7 @@ public class SessionsDAO {
 
 	public List<Sessions> list() {
 		String sql = "select * from sessions";
-		
+
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 			Sessions session = new Sessions();
 			session.setSessionId(rs.getInt("session_id"));
@@ -67,5 +74,4 @@ public class SessionsDAO {
 		});
 
 	}
-
 }
