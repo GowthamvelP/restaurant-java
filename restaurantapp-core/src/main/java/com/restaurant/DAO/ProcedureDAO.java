@@ -24,8 +24,7 @@ public class ProcedureDAO {
 				new SqlOutParameter("message_status", Types.VARCHAR));
 		call.setAccessCallParameterMetaData(false);
 		SqlParameterSource in = new MapSqlParameterSource().addValue("seat_no", seatno).addValue("order_list", items)
-				.addValue("order_time", orderTime).addValue("quantity_list", quantity)
-				.addValue("message_status", message);
+				.addValue("order_time", orderTime).addValue("quantity_list", quantity);
 
 		Map<String, Object> execute = call.execute(in);
 		String status = (String) execute.get("message_status");
@@ -39,7 +38,7 @@ public class ProcedureDAO {
 				new SqlParameter("cancel_quantity", Types.VARCHAR), new SqlOutParameter("statement", Types.VARCHAR));
 		call.setAccessCallParameterMetaData(false);
 		SqlParameterSource in = new MapSqlParameterSource().addValue("seat_no_par", seatno).addValue("item", items)
-				.addValue("cancel_quantity", quantity).addValue("statement", message);
+				.addValue("cancel_quantity", quantity);
 
 		Map<String, Object> execute = call.execute(in);
 		String status = (String) execute.get("statement");

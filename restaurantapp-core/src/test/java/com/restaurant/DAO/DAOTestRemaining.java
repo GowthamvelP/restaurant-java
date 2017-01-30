@@ -8,7 +8,7 @@ public class DAOTestRemaining {
 
 	public static void main(String[] args) {
 		RemainingDetailsDAO remain = new RemainingDetailsDAO();
-		/*RemainingDetails remains = new RemainingDetails();
+		RemainingDetails remains = new RemainingDetails();
 		Sessions sessionobj = new Sessions();
 		ItemsList iid = new ItemsList();
 		sessionobj.setSessionId(1);
@@ -17,7 +17,9 @@ public class DAOTestRemaining {
 		remains.setSeId(sessionobj);
 		remains.setItemId(iid);
 		remains.setRemaining(100);
-		remain.delete(20);*/
+		remain.delete(20);
+		remain.save(remains);
+		remain.update(remains);
 		System.out.println(remain.list());
 
 	}

@@ -9,10 +9,9 @@ public class DAOTestSeat {
 		seat.setSeatId(11);
 		seat.setSeatNo(111);
 		seat.setSeatStatus("Available");
-		/*
-		 * seats.delete(111); seats.update(seat);
-		 */
+		seats.delete(111);
+		seats.update(seat);
 		seats.save(seat);
-		/* seats.list(); */
+		seats.list();
 	}
 }
