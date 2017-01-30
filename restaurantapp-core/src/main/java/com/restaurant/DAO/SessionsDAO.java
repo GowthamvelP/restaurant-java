@@ -17,6 +17,7 @@ public class SessionsDAO {
 	public void save(Sessions session) {
 
 		try {
+
 			String sql = "insert into sessions(session_id,session_name,from_time,to_time,quantity) values(?,?,?,?,?)";
 			Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
 					session.getToTime(), session.getQuantity() };

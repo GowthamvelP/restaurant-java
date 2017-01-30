@@ -72,23 +72,26 @@ public class ProcedureDAO {
 		return null;
 
 	}
+
 	public int FnItemsLimit(int orderId) {
 		String sql = "select fn_check_items_limit(?)";
 		Object[] params = { orderId };
 		int status = jdbcTemplate.queryForObject(sql, params, int.class);
 		return status;
 	}
+
 	public int FnCheckSeat(int seatno) {
 		String sql = "select fn_check_seat(?)";
 		Object[] params = { seatno };
 		int status = jdbcTemplate.queryForObject(sql, params, int.class);
 		return status;
 	}
-	public int FnCheckRemaining(int itemid,int quantity) {
+
+	public int FnCheckRemaining(int itemid, int quantity) {
 		String sql = "select fn_check_remaining(?,?)";
-		Object[] params = { itemid,quantity };
+		Object[] params = { itemid, quantity };
 		int status = jdbcTemplate.queryForObject(sql, params, int.class);
 		return status;
 	}
-	
+
 }

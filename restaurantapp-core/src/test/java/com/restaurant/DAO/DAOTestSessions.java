@@ -1,6 +1,10 @@
 package com.restaurant.DAO;
 
-/*import com.restaurant.model.Sessions;*/
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+import com.restaurant.model.Sessions;
 
 public class DAOTestSessions {
 	public static void main(String[] args) {
@@ -14,7 +18,18 @@ public class DAOTestSessions {
 		 * sessionsdao.save(session); sessionsdao.delete(5);
 		 * sessionsdao.update(session); sessionsdao.list();
 		 */
-		System.out.println(sessionsdao.list());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
+		LocalTime time = LocalTime.now();
+		String timeForm = formatter.format(time);
+		Sessions session = new Sessions();
+		session.setSessionId(1);
+		session.setSessionName(" ");
+		session.setFromTime(LocalTime.parse(timeForm));
+		session.setToTime(LocalTime.parse(timeForm));
+		session.setQuantity(100);
 
+		// sessionsdao.save(session);
+		// System.out.println(sessionsdao.list());
+		sessionsdao.save(session);
 	}
 }
