@@ -2,7 +2,6 @@ package com.restaurant.DAO;
 
 import java.util.List;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.OrderTransaction;
@@ -12,17 +11,14 @@ public class OrderTransactionDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	public void save(OrderTransaction transaction) {
-		try {
-			String sql = "insert into order_transaction(trans_id,order_id,item_id,seat_no,food_ordered,quantity,order_time,order_status) values(?,?,?,?,?,?,?,?)";
-			Object[] params = { transaction.getTransId(), transaction.getOrderId(), transaction.getItemId(),
-					transaction.getSeatNo(), transaction.getFoodOrdered(), transaction.getQuantity(),
-					transaction.getOrderTime(), transaction.getOrderStatus() };
-			int rows = jdbcTemplate.update(sql, params);
-			System.out.println("No of rows inserted: " + rows);
-		} catch (DuplicateKeyException e) {
-			System.out.println("Cannot have a duplicate key");
 
-		}
+		String sql = "insert into order_transaction(trans_id,order_id,item_id,seat_no,food_ordered,quantity,order_time,order_status) values(?,?,?,?,?,?,?,?)";
+		Object[] params = { transaction.getTransId(), transaction.getOrderId(), transaction.getItemId(),
+				transaction.getSeatNo(), transaction.getFoodOrdered(), transaction.getQuantity(),
+				transaction.getOrderTime(), transaction.getOrderStatus() };
+		int rows = jdbcTemplate.update(sql, params);
+		System.out.println("No of rows inserted: " + rows);
+
 	}
 
 	public List<OrderTransaction> list() {

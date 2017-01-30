@@ -2,7 +2,6 @@ package com.restaurant.DAO;
 
 import java.util.List;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.MaximumQuantity;
@@ -13,15 +12,12 @@ public class MaximumQuantityDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	public void save(MaximumQuantity maxi) {
-		try {
-			String sql = "insert into maximum_quantity(sno,day_name,max_quantity) values(?,?,?)";
-			Object[] params = { maxi.getSno(), maxi.getDayName(), maxi.getMaxQuantity() };
-			int rows = jdbcTemplate.update(sql, params);
-			System.out.println("No of rows inserted: " + rows);
-		} catch (DuplicateKeyException e) {
-			System.out.println("Cannot have a duplicate key");
 
-		}
+		String sql = "insert into maximum_quantity(sno,day_name,max_quantity) values(?,?,?)";
+		Object[] params = { maxi.getSno(), maxi.getDayName(), maxi.getMaxQuantity() };
+		int rows = jdbcTemplate.update(sql, params);
+		System.out.println("No of rows inserted: " + rows);
+
 	}
 
 	public void update(MaximumQuantity maxi) {

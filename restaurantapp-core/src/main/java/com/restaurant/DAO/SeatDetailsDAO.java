@@ -2,7 +2,6 @@ package com.restaurant.DAO;
 
 import java.util.List;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.SeatDetails;
@@ -13,15 +12,12 @@ public class SeatDetailsDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	public void save(SeatDetails seat) {
-		try {
-			String sql = "insert into seat_details(seat_id,seat_no,seat_status) values(?,?,?)";
-			Object[] params = { seat.getSeatId(), seat.getSeatNo(), seat.getSeatStatus() };
-			int rows = jdbcTemplate.update(sql, params);
-			System.out.println("No of rows inserted: " + rows);
-		} catch (DuplicateKeyException e) {
-			System.out.println("Cannot have a duplicate key");
 
-		}
+		String sql = "insert into seat_details(seat_id,seat_no,seat_status) values(?,?,?)";
+		Object[] params = { seat.getSeatId(), seat.getSeatNo(), seat.getSeatStatus() };
+		int rows = jdbcTemplate.update(sql, params);
+		System.out.println("No of rows inserted: " + rows);
+
 	}
 
 	public void update(SeatDetails seat) {

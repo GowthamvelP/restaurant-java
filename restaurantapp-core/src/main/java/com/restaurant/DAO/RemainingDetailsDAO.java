@@ -15,16 +15,13 @@ public class RemainingDetailsDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	public void save(RemainingDetails remains) {
-		try {
-			String sql = "insert into remaining_details(sno,se_id,item_id,remaining) values(?,?,?,?)";
-			Object[] params = { remains.getSno(), remains.getSeId().getSessionId(), remains.getItemId().getItemId(),
-					remains.getRemaining() };
-			int rows = jdbcTemplate.update(sql, params);
-			System.out.println("No of rows inserted: " + rows);
-		} catch (DuplicateKeyException e) {
-			System.out.println("Cannot have a duplicate key");
 
-		}
+		String sql = "insert into remaining_details(sno,se_id,item_id,remaining) values(?,?,?,?)";
+		Object[] params = { remains.getSno(), remains.getSeId().getSessionId(), remains.getItemId().getItemId(),
+				remains.getRemaining() };
+		int rows = jdbcTemplate.update(sql, params);
+		System.out.println("No of rows inserted: " + rows);
+
 	}
 
 	public void update(RemainingDetails remains) {

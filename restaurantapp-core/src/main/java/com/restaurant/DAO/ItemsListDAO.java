@@ -2,9 +2,6 @@ package com.restaurant.DAO;
 
 import java.util.List;
 
-import org.springframework.dao.DuplicateKeyException;
-/*import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.dao.IncorrectResultSizeDataAccessException;*/
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.ItemsList;
@@ -15,15 +12,12 @@ public class ItemsListDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	public void save(ItemsList itemslist) {
-		try {
-			String sql = "insert into items_list(item_id,session_id,items) values(?,?,?)";
-			Object[] params = { itemslist.getItemId(), itemslist.getSessionId().getSessionId(), itemslist.getItems() };
-			int rows = jdbcTemplate.update(sql, params);
-			System.out.println("No of rows inserted: " + rows);
-		} catch (DuplicateKeyException e) {
-			System.out.println("Cannot have a duplicate key");
 
-		}
+		String sql = "insert into items_list(item_id,session_id,items) values(?,?,?)";
+		Object[] params = { itemslist.getItemId(), itemslist.getSessionId().getSessionId(), itemslist.getItems() };
+		int rows = jdbcTemplate.update(sql, params);
+		System.out.println("No of rows inserted: " + rows);
+
 	}
 
 	public void update(ItemsList itemslist) {
