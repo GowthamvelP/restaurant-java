@@ -27,8 +27,7 @@ public class ProcedureDAO {
 				.addValue("order_time", orderTime).addValue("quantity_list", quantity);
 
 		Map<String, Object> execute = call.execute(in);
-		String status = (String) execute.get("message_status");
-		return status;
+		return (String) execute.get("message_status");
 
 	}
 
@@ -41,8 +40,7 @@ public class ProcedureDAO {
 				.addValue("cancel_quantity", quantity);
 
 		Map<String, Object> execute = call.execute(in);
-		String status = (String) execute.get("statement");
-		return status;
+		return (String) execute.get("statement");
 
 	}
 
@@ -54,8 +52,7 @@ public class ProcedureDAO {
 		SqlParameterSource in = new MapSqlParameterSource().addValue("item_id_par", itemid).addValue("quantity",
 				quantity);
 		Map<String, Object> execute = call.execute(in);
-		String status = (String) execute.get("quantity");
-		return status;
+		return (String) execute.get("quantity");
 
 	}
 
@@ -69,15 +66,13 @@ public class ProcedureDAO {
 	public int fncheckseat(int seatno) {
 		String sql = "select fn_check_seat(?)";
 		Object[] params = { seatno };
-		int status = jdbcTemplate.queryForObject(sql, params, int.class);
-		return status;
+		return jdbcTemplate.queryForObject(sql, params, int.class);
 	}
 
 	public int fncheckremaining(int itemid, int quantity) {
 		String sql = "select fn_check_remaining(?,?)";
 		Object[] params = { itemid, quantity };
-		int status = jdbcTemplate.queryForObject(sql, params, int.class);
-		return status;
+		return jdbcTemplate.queryForObject(sql, params, int.class);
 	}
 
 }
