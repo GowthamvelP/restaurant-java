@@ -26,10 +26,10 @@ public class ItemsListDAO {
 
 	}
 
-	public void delete(int Itemid) {
+	public void delete(int itemid) {
 
 		String sql = "delete from items_list where item_id=?";
-		Object[] params = { Itemid };
+		Object[] params = { itemid };
 		jdbcTemplate.update(sql, params);
 
 	}

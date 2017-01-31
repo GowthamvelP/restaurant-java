@@ -31,26 +31,26 @@ public class ProcedureDAO {
 
 	}
 
-	public String cancelorder(int seatno, String items, int quantity) {
+	public String cancelorder(int seatno, String items, int quan) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("pr_cancel_order").declareParameters(
 				new SqlParameter("seat_no_par", Types.INTEGER), new SqlParameter("item", Types.VARCHAR),
 				new SqlParameter("cancel_quantity", Types.VARCHAR), new SqlOutParameter("statement", Types.VARCHAR));
 		call.setAccessCallParameterMetaData(false);
 		SqlParameterSource in = new MapSqlParameterSource().addValue("seat_no_par", seatno).addValue("item", items)
-				.addValue("cancel_quantity", quantity);
+				.addValue("cancel_quantity", quan);
 
 		Map<String, Object> execute = call.execute(in);
 		return (String) execute.get("statement");
 
 	}
 
-	public String updateremaining(int itemid, int quantity) {
+	public String updateremaining(int itemid, int quant) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("pr_to_update_remiaining")
 				.declareParameters(new SqlParameter("item_id_par", Types.INTEGER),
 						new SqlOutParameter("quantity", Types.INTEGER));
 		call.setAccessCallParameterMetaData(false);
 		SqlParameterSource in = new MapSqlParameterSource().addValue("item_id_par", itemid).addValue("quantity",
-				quantity);
+				quant);
 		Map<String, Object> execute = call.execute(in);
 		return (String) execute.get("quantity");
 
@@ -59,8 +59,7 @@ public class ProcedureDAO {
 	public int fnitemslimit(int orderId) {
 		String sql = "select fn_check_items_limit(?)";
 		Object[] params = { orderId };
-		int status = jdbcTemplate.queryForObject(sql, params, int.class);
-		return status;
+		return jdbcTemplate.queryForObject(sql, params, int.class);
 	}
 
 	public int fncheckseat(int seatno) {

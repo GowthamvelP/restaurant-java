@@ -27,9 +27,9 @@ public class MaximumQuantityDAO {
 
 	}
 
-	public void delete(String Dayname) {
+	public void delete(String dayname) {
 		String sql = "delete from maximum_quantity where day_name=?";
-		Object[] params = { Dayname };
+		Object[] params = { dayname };
 		jdbcTemplate.update(sql, params);
 
 	}

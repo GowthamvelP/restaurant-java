@@ -1,26 +1,24 @@
-package com.restaurant.testdao;
+package com.restaurant.Validator;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import com.restaurant.dao.SessionsDAO;
 import com.restaurant.model.Sessions;
+import com.restaurant.validator.Service;
 
-public class DAOTestSessions {
+public class TestService {
 	public static void main(String[] args) {
-		SessionsDAO sessionsdao = new SessionsDAO();
+		Sessions session = new Sessions();
+		Service serve = new Service();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
 		LocalTime time = LocalTime.now();
 		String timeForm = formatter.format(time);
-		Sessions session = new Sessions();
 		session.setSessionId(1);
-		session.setSessionName(" idly");
+		session.setSessionName(" ");
 		session.setFromTime(LocalTime.parse(timeForm));
 		session.setToTime(LocalTime.parse(timeForm));
 		session.setQuantity(100);
-		sessionsdao.save(session);
-		/*sessionsdao.list();
-		sessionsdao.delete(1);*/
+		serve.check(session);
 	}
 }
