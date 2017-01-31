@@ -29,10 +29,10 @@ public class SessionsDAO {
 
 	}
 
-	public void delete(int Sessionid) {
+	public void delete(int sessionid) {
 
 		String sql = "delete from sessions where session_id=?";
-		Object[] params = { Sessionid };
+		Object[] params = { sessionid };
 		jdbcTemplate.update(sql, params);
 
 	}
