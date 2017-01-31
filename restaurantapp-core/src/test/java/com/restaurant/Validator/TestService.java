@@ -14,8 +14,8 @@ public class TestService {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
 		LocalTime time = LocalTime.now();
 		String timeForm = formatter.format(time);
-		session.setSessionId(16);
-		session.setSessionName("vada");
+		session.setSessionId(1);
+		session.setSessionName("idlyyyy");
 		session.setFromTime(LocalTime.parse(timeForm));
 		session.setToTime(LocalTime.parse(timeForm));
 		session.setQuantity(100);
