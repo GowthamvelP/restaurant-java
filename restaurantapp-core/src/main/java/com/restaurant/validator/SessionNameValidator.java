@@ -7,8 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SessionNameValidator {
+	final Logger logger = Logger.getLogger(SessionNameValidator.class.getName());
 	public void validateSave(Sessions session) {
-		final Logger logger = Logger.getLogger(SessionNameValidator.class.getName());
+		
 
 		if (" ".equals(session.getSessionName())) {
 			try {
