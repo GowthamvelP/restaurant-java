@@ -51,10 +51,7 @@ public class ProcedureDAO {
 				.declareParameters(new SqlParameter("item_id_par", Types.INTEGER),
 						new SqlOutParameter("quantity", Types.INTEGER));
 		call.setAccessCallParameterMetaData(false);
-		SqlParameterSource in = new MapSqlParameterSource().addValue("item_id_par", itemid).addValue("quantity",
-				quantity);
 
-		Map<String, Object> execute = call.execute(in);
 		return null;
 
 	}
@@ -64,10 +61,6 @@ public class ProcedureDAO {
 				.declareParameters(new SqlParameter("item_id_par", Types.INTEGER),
 						new SqlOutParameter("cancel_quantity", Types.INTEGER));
 		call.setAccessCallParameterMetaData(false);
-		SqlParameterSource in = new MapSqlParameterSource().addValue("item_id_par", itemid).addValue("cancel_quantity",
-				quantity);
-
-		Map<String, Object> execute = call.execute(in);
 		return null;
 
 	}
