@@ -1,4 +1,4 @@
-package com.restaurant.DAO;
+package com.restaurant.dao;
 
 import java.util.List;
 
@@ -29,10 +29,10 @@ public class ItemsListDAO {
 
 	}
 
-	public void delete(int ItemId) {
+	public void delete(int Itemid) {
 
 		String sql = "delete from items_list where item_id=?";
-		Object[] params = { ItemId };
+		Object[] params = { Itemid };
 		int rows = jdbcTemplate.update(sql, params);
 		System.out.println("No of rows deleted: " + rows);
 
@@ -60,7 +60,8 @@ public class ItemsListDAO {
 	public ItemsList listbyid(int id) {
 
 		String sql = "select items from items_list where item_id=?";
-		return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
+		Object[] params = { id };
+		return jdbcTemplate.queryForObject(sql, params, (rs, rowNum) -> {
 			ItemsList items = new ItemsList();
 			items.setItemId(rs.getInt("item_id"));
 			items.setItems(rs.getString("items"));

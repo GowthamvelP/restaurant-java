@@ -1,5 +1,6 @@
-package com.restaurant.DAO;
+package com.restaurant.testdao;
 
+import com.restaurant.dao.RemainingDetailsDAO;
 import com.restaurant.model.ItemsList;
 import com.restaurant.model.RemainingDetails;
 import com.restaurant.model.Sessions;

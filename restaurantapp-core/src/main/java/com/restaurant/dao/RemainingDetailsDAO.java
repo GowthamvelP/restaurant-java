@@ -1,8 +1,7 @@
-package com.restaurant.DAO;
+package com.restaurant.dao;
 
 import java.util.List;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.ItemsList;
@@ -61,23 +60,5 @@ public class RemainingDetailsDAO {
 		});
 	}
 
-	/*
-	 * public ItemsLIst listbyId(int id) { String
-	 * sql="select remaining from remaining_details where item_id=? and session_id=?"
-	 * ; Object[] params = {id}; return
-	 * jdbcTemplate.queryForObject(sql,params,(rs,rowNum) -> { ItemsLIst items =
-	 * new ItemsLIst(); RemainingDetails remaining = new RemainingDetails();
-	 * Sessions session = new Sessions();
-	 * 
-	 * items.setItemId(rs.getInt("item_id")); remaining.setItemId(items);
-	 * session.setSessionId(rs.getInt("session_id"));
-	 * remaining.setSeId(session);
-	 * remaining.setRemaining(rs.getInt("remaining")); return remaining;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * });
-	 */
 
 }

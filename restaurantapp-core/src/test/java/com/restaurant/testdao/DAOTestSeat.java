@@ -1,5 +1,6 @@
-package com.restaurant.DAO;
+package com.restaurant.testdao;
 
+import com.restaurant.dao.SeatDetailsDAO;
 import com.restaurant.model.SeatDetails;
 
 public class DAOTestSeat {

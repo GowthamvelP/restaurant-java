@@ -1,5 +1,6 @@
-package com.restaurant.DAO;
+package com.restaurant.testdao;
 
+import com.restaurant.dao.MaximumQuantityDAO;
 import com.restaurant.model.MaximumQuantity;
 
 public class DAOTestMaximum {

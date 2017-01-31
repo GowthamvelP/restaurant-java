@@ -1,4 +1,4 @@
-package com.restaurant.DAO;
+package com.restaurant.dao;
 
 import java.util.List;
 
@@ -29,9 +29,9 @@ public class MaximumQuantityDAO {
 
 	}
 
-	public void delete(String DayName) {
+	public void delete(String Dayname) {
 		String sql = "delete from maximum_quantity where day_name=?";
-		Object[] params = { DayName };
+		Object[] params = { Dayname };
 		int rows = jdbcTemplate.update(sql, params);
 		System.out.println("No of rows deleted: " + rows);
 

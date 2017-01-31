@@ -1,4 +1,4 @@
-package com.restaurant.DAO;
+package com.restaurant.dao;
 
 import java.util.List;
 
@@ -31,10 +31,10 @@ public class SessionsDAO {
 
 	}
 
-	public void delete(int SessionId) {
+	public void delete(int Sessionid) {
 
 		String sql = "delete from sessions where session_id=?";
-		Object[] params = { SessionId };
+		Object[] params = { Sessionid };
 		int rows = jdbcTemplate.update(sql, params);
 		System.out.println("No of rows deleted: " + rows);
 

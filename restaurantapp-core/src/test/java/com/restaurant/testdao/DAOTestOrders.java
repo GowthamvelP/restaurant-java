@@ -1,5 +1,6 @@
-package com.restaurant.DAO;
+package com.restaurant.testdao;
 
+import com.restaurant.dao.OrderTransactionDAO;
 import com.restaurant.model.OrderTransaction;
 
 public class DAOTestOrders {

@@ -1,9 +1,10 @@
-package com.restaurant.DAO;
+package com.restaurant.testdao;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import com.restaurant.dao.SessionsDAO;
 import com.restaurant.model.Sessions;
 
 public class DAOTestSessions {

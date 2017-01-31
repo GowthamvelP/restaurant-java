@@ -1,9 +1,10 @@
-package com.restaurant.DAO;
+package com.restaurant.testdao;
 
-import com.restaurant.DAO.ProcedureDAO;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+
+import com.restaurant.dao.ProcedureDAO;
 
 public class DAOTestProcedure {
 
@@ -15,12 +16,11 @@ public class DAOTestProcedure {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
 		LocalTime time = LocalTime.now();
 		String timeForm = formatter.format(time);
-		String status = dao.PlaceOrder(101, "Chappathi", LocalTime.parse(timeForm), "2", "@message_status");
+		String status = dao.PlaceOrder(101, "Chappathi", LocalTime.parse(timeForm), "2");
 		System.out.println(status);
-		String status1 = dao.CancelOrder(101, "VarietyRice", 2, "@statement");
+		String status1 = dao.CancelOrder(101, "VarietyRice", 2);
 		System.out.println(status1);
 		dao.UpdateRemaining(1, 5);
-		dao.UpdateRemainingCancelled(1, 5);
 		System.out.println(dao.FnItemsLimit(11));
 		System.out.println(dao.FnCheckSeat(1231));
 		System.out.println(dao.FnCheckRemaining(1, 80));
