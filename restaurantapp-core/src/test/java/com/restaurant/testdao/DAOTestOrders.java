@@ -15,7 +15,7 @@ public class DAOTestOrders {
 		transaction.setOrderTime("09:00:00");
 		transaction.setOrderStatus("Order Placed");
 		trans.save(transaction);
-		System.out.println(trans.list());
+		trans.list();
 
 	}
 }

@@ -21,7 +21,7 @@ public class DAOTestRemaining {
 		remain.delete(20);
 		remain.save(remains);
 		remain.update(remains);
-		System.out.println(remain.list());
+		remain.list();
 
 	}
 }

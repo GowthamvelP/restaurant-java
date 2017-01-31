@@ -20,7 +20,7 @@ public class DAOTestSessions {
 		session.setToTime(LocalTime.parse(timeForm));
 		session.setQuantity(100);
 		sessionsdao.save(session);
-		System.out.println(sessionsdao.list());
+		sessionsdao.list();
 		sessionsdao.delete(1);
 	}
 }

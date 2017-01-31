@@ -1,8 +1,6 @@
 package com.restaurant.dao;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -12,14 +10,12 @@ import com.restaurant.util.ConnectionUtil;
 public class SeatDetailsDAO {
 
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-	final Logger logger = Logger.getLogger(SeatDetailsDAO.class.getName());
 
 	public void save(SeatDetails seat) {
 
 		String sql = "insert into seat_details(seat_id,seat_no,seat_status) values(?,?,?)";
 		Object[] params = { seat.getSeatId(), seat.getSeatNo(), seat.getSeatStatus() };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows inserted: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 
@@ -27,8 +23,7 @@ public class SeatDetailsDAO {
 
 		String sql = "update seat_details set seat_stautus=? where seat_no=?";
 		Object[] params = { seat.getSeatId(), seat.getSeatNo(), seat.getSeatStatus() };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows updated: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 
@@ -36,8 +31,7 @@ public class SeatDetailsDAO {
 
 		String sql = "delete from seat_details where seat_no=?";
 		Object[] params = { seatno };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows deleted: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 

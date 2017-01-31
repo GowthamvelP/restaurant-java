@@ -13,6 +13,6 @@ public class DAOTestMaximum {
 		max.update(maxi);
 		max.save(maxi);
 		max.delete("week_day");
-		System.out.println(max.list());
+		max.list();
 	}
 }

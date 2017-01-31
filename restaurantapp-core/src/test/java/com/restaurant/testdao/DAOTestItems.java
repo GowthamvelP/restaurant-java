@@ -18,8 +18,8 @@ public class DAOTestItems {
 		testitems.delete(101);
 		testitems.save(itemslist);
 		testitems.update(itemslist);
-		System.out.println(testitems.listbyid(1));
-		System.out.println(testitems.list());
+		testitems.listbyid(1);
+		testitems.list();
 
 	}
 }

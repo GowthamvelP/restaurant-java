@@ -1,8 +1,6 @@
 package com.restaurant.dao;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -11,7 +9,6 @@ import com.restaurant.util.ConnectionUtil;
 
 public class OrderTransactionDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-	final Logger logger = Logger.getLogger(OrderTransactionDAO.class.getName());
 
 	public void save(OrderTransaction transaction) {
 
@@ -19,8 +16,7 @@ public class OrderTransactionDAO {
 		Object[] params = { transaction.getTransId(), transaction.getOrderId(), transaction.getItemId(),
 				transaction.getSeatNo(), transaction.getFoodOrdered(), transaction.getQuantity(),
 				transaction.getOrderTime(), transaction.getOrderStatus() };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows inserted: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 

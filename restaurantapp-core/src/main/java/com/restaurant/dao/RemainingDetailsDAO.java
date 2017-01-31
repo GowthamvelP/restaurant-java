@@ -1,8 +1,6 @@
 package com.restaurant.dao;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -14,15 +12,13 @@ import com.restaurant.util.ConnectionUtil;
 public class RemainingDetailsDAO {
 
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-	final Logger logger = Logger.getLogger(RemainingDetailsDAO.class.getName());
 
 	public void save(RemainingDetails remains) {
 
 		String sql = "insert into remaining_details(sno,se_id,item_id,remaining) values(?,?,?,?)";
 		Object[] params = { remains.getSno(), remains.getSeId().getSessionId(), remains.getItemId().getItemId(),
 				remains.getRemaining() };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows inserted: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 
@@ -30,8 +26,7 @@ public class RemainingDetailsDAO {
 
 		String sql = "update remaining_details set remaining=? where item_Id=?";
 		Object[] params = { remains.getSeId().getSessionId(), remains.getItemId().getItemId(), remains.getRemaining() };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows updated: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 
@@ -39,8 +34,7 @@ public class RemainingDetailsDAO {
 
 		String sql = "delete from remaining_details where item_id=?";
 		Object[] params = { itemid };
-		int rows = jdbcTemplate.update(sql, params);
-		logger.log(Level.SEVERE, "No of rows deleted: " + rows);
+		jdbcTemplate.update(sql, params);
 
 	}
 
