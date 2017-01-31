@@ -16,6 +16,7 @@ public class ItemsListDAO {
 		String sql = "insert into items_list(item_id,session_id,items) values(?,?,?)";
 		Object[] params = { itemslist.getItemId(), itemslist.getSessionId().getSessionId(), itemslist.getItems() };
 		jdbcTemplate.update(sql, params);
+
 	}
 
 	public void update(ItemsList itemslist) {

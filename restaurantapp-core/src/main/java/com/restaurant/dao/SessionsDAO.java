@@ -2,6 +2,7 @@ package com.restaurant.dao;
 
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.restaurant.model.Sessions;
@@ -12,11 +13,15 @@ public class SessionsDAO {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	public void save(Sessions session) {
+		try {
+			String sql = "insert into sessions(session_id,session_name,from_time,to_time,quantity) values(?,?,?,?,?)";
+			Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
+					session.getToTime(), session.getQuantity() };
+			jdbcTemplate.update(sql, params);
+		} catch (DuplicateKeyException e) {
+			throw new DuplicateKeyException("Duplicate Entry");
 
-		String sql = "insert into sessions(session_id,session_name,from_time,to_time,quantity) values(?,?,?,?,?)";
-		Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
-				session.getToTime(), session.getQuantity() };
-		jdbcTemplate.update(sql, params);
+		}
 
 	}
 
