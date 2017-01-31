@@ -1,6 +1,8 @@
 package com.restaurant.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -10,6 +12,7 @@ import com.restaurant.util.ConnectionUtil;
 public class SessionsDAO {
 
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
+	final Logger logger = Logger.getLogger(SessionsDAO.class.getName());
 
 	public void save(Sessions session) {
 
@@ -17,7 +20,7 @@ public class SessionsDAO {
 		Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
 				session.getToTime(), session.getQuantity() };
 		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows inserted: " + rows);
+		logger.log(Level.SEVERE, "No of rows inserted: " + rows);
 
 	}
 
@@ -27,7 +30,7 @@ public class SessionsDAO {
 		Object[] params = { session.getSessionId(), session.getSessionName(), session.getFromTime(),
 				session.getFromTime(), session.getQuantity() };
 		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		logger.log(Level.SEVERE, "No of rows updated: " + rows);
 
 	}
 
@@ -36,7 +39,7 @@ public class SessionsDAO {
 		String sql = "delete from sessions where session_id=?";
 		Object[] params = { Sessionid };
 		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows deleted: " + rows);
+		logger.log(Level.SEVERE, "No of rows deleted: " + rows);
 
 	}
 

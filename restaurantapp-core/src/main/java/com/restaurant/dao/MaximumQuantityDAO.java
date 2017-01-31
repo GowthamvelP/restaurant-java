@@ -1,6 +1,8 @@
 package com.restaurant.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -10,13 +12,14 @@ import com.restaurant.util.ConnectionUtil;
 public class MaximumQuantityDAO {
 
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
+	final Logger logger = Logger.getLogger(MaximumQuantityDAO.class.getName());
 
 	public void save(MaximumQuantity maxi) {
 
 		String sql = "insert into maximum_quantity(sno,day_name,max_quantity) values(?,?,?)";
 		Object[] params = { maxi.getSno(), maxi.getDayName(), maxi.getMaxQuantity() };
 		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows inserted: " + rows);
+		logger.log(Level.SEVERE, "No of rows inserted: " + rows);
 
 	}
 
@@ -25,7 +28,7 @@ public class MaximumQuantityDAO {
 		String sql = "update maximum_quantity set max_quantity=? where day_name=?";
 		Object[] params = { maxi.getMaxQuantity(), maxi.getDayName() };
 		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows updated: " + rows);
+		logger.log(Level.SEVERE, "No of rows updated: " + rows);
 
 	}
 
@@ -33,7 +36,7 @@ public class MaximumQuantityDAO {
 		String sql = "delete from maximum_quantity where day_name=?";
 		Object[] params = { Dayname };
 		int rows = jdbcTemplate.update(sql, params);
-		System.out.println("No of rows deleted: " + rows);
+		logger.log(Level.SEVERE, "No of rows deleted: " + rows);
 
 	}
 
